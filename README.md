@@ -65,3 +65,6 @@ Daniel John Idorot
 
 ## Contribution
 Each team member contributes through GitHub using commits and pull requests. All code changes should include clear commit messages and follow clean coding practices.
+
+ ## Favourite's Favorite Quote
+"Success is not final failure is not fatal it is the courage to continue that counts."
