@@ -1,10 +1,8 @@
+import Home from "./pages/Home"
+import "./styles.css"
+
 function App() {
-  return (
-    <div>
-      <h1>CommunityPulse</h1>
-      <p>Welcome to CommunityPulse Feedback System</p>
-    </div>
-  )
+  return <Home />
 }
 
 export default App
