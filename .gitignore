@@ -50,8 +50,7 @@ web_modules/
 # Optional npm cache directory
 .npm
 
-#environment variable
-.env
+
 
 # Optional eslint cache
 .eslintcache
