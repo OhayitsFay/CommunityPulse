@@ -11,7 +11,7 @@ function Hero() {
     >
       <h1>CommunityPulse</h1>
       <p>Understand your community through real feedback and insights</p>
-      <button>Get Started</button>
+      <button><a href="/feedback">Get Started</a></button>
     </motion.div>
   )
 }

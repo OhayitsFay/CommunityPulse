@@ -11,10 +11,9 @@ function Footer() {
 
         <div>
           <h4>Quick Links</h4>
-          <p>Home</p>
-          <p>Dashboard</p>
-          <p>Submit Feedback</p>
-          <p>Contact</p>
+          <p><a href="/">Home</a></p>
+          <p><a href="/feedback">Feedback</a></p>
+          <p><a href="/dashboard">Dashboard</a></p>
         </div>
 
         <div>
