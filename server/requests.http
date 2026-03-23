@@ -1,0 +1,7 @@
+POST http://localhost:5000/api/feedback/localhost:5000/api/feedback/submit
+Content-Type: application/json
+
+{
+"message": "Communication in our community can improve",
+"category": "Communication"
+}
