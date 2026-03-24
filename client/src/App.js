@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-function App() {
-  return (
-    <div>
-      <h1>CommunityPulse</h1>
-      <p>Welcome to CommunityPulse Feedback System</p>
-    </div>
-=======
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from "./pages/Home"
 import SideNav from "./components/SideNav"
@@ -28,7 +20,6 @@ function App() {
       </div>
 
     </BrowserRouter>
->>>>>>> 1cd02310a2f48e10ffec43b8bc08bacd8a298dd9
   )
 }
 

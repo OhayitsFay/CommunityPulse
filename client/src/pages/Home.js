@@ -2,7 +2,7 @@
 import Hero from "../components/Hero"
 import SidebarLeft from "../components/SidebarLeft"
 import SidebarRight from "../components/SidebarRight"
-import Footer from "../components/Footerr"
+import Footer from "../components/Footer"
 import { motion } from "framer-motion"
 
 function Home() {

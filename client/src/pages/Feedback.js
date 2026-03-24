@@ -1,6 +1,6 @@
 import FeedbackForm from "../components/FeedbackForm"
 import Hero from "../components/Hero"
-import Footer from "../components/Footerr"
+import Footer from "../components/Footer"
 import { motion } from "framer-motion"
 
 function Feedback() {

@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
   }
 })
 
-// Get all feedback (ADMIN ONLY later)
+// Get all feedback (ADMIN ONLY)
 router.get("/", async (req, res) => {
   const feedbacks = await Feedback.find().sort({ createdAt: -1 })
   res.json(feedbacks)
