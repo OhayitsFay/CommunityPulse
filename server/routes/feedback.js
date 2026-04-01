@@ -7,11 +7,13 @@ const auth = require("../middleware/auth")
 router.post("/", async (req, res) => {
   try {
 
-    const { message, category } = req.body
+    const { message, category, isAnonymous, userName } = req.body
 
     const feedback = new Feedback({
       message,
-      category
+      category,
+      isAnonymous,
+      userName: isAnonymous ? "" : userName
     })
 
     await feedback.save()

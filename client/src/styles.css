@@ -15,7 +15,7 @@ body {
   position: fixed;
   left: 0;
   top: 0;
-  width: 18vh;
+  width: 18.3vh;
   height: 100vh;
   background: #013307;
   color: white;
@@ -68,6 +68,7 @@ body {
   font-size: 26px;
   cursor: pointer;
   z-index: 1100;
+  background-color: #13542a;
   padding: 5px 10px;
   border-radius: 5px;
 }
@@ -245,28 +246,111 @@ footer {
 }
 .feedback-card {
   background: white;
-  padding: 15px;
+  padding: 19px;
   margin-top: 10px;
-  border-radius: 8px;
-  border-left: 5px solid #5a54f9;
+  border-radius: 15px;
+  border-left: 5px solid #052b15;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 20px;
+  small {
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    padding: 10px 0;
+  }
+  medium {
+    font-size: 15px;
+    color: black;
+    display: flex;
+
+  }
 }
 
 .feedback-form textarea {
   width: 100%;
   height: 120px;
   padding: 10px;
-  font-size: 22px;
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 10px;
   border-radius: 18px;
-  border: 3px solid #ccc;
+  border: 7px solid #052b15;
 }
 
 .feedback-form select {
   width: 100%;
-  padding: 20px;
+  padding: 26px;
   font-size: 20px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 30px;
+  color: #f5f7fb;
+  background-color: #13542a;
   border-radius: 8px;
+  option {
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #13542a;
+    color: #f5f7fb;
+    gap: 20px;
+  }
+}
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 20px ;
+}
+
+/* Switch toggle */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+.toggle-label {
+  font-size: 25px;
 }
 
 .feedback-form button {
