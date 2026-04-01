@@ -22,6 +22,10 @@ const feedbackSchema = new mongoose.Schema(
             type: Boolean,
             default: true
         },
+        userName: {
+            type: String,
+            default: ""
+        },
         createdAt: {
             type: Date,
             default: Date.now

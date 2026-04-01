@@ -5,6 +5,8 @@ function FeedbackForm() {
 
   const [message, setMessage] = useState("")
   const [category, setCategory] = useState("General")
+  const [isAnonymous, setIsAnonymous] = useState(true)
+  const [userName, setUserName] = useState("")
   const [status, setStatus] = useState("")
 
   const handleSubmit = async (e) => {
@@ -15,15 +17,22 @@ function FeedbackForm() {
       return
     }
 
+    if (!isAnonymous && !userName) {
+      setStatus("Please enter your name or email")
+      return
+    }
+
     try {
 
       const res = await axios.post(
         "http://localhost:5000/api/feedback",
-        { message, category }
+        { message, category, isAnonymous, userName }
       )
 
       setStatus(res.data.message)
       setMessage("")
+      setUserName("")
+      setIsAnonymous(true)
 
     } catch (error) {
       setStatus("Error submitting feedback")
@@ -52,6 +61,30 @@ function FeedbackForm() {
           <option>Events</option>
           <option>Communication</option>
         </select>
+
+        {/* Anonymous toggle */}
+        <div className="toggle-container">
+          <label className="switch">
+            <input
+              type="checkbox"
+              checked={isAnonymous}
+              onChange={() => setIsAnonymous(!isAnonymous)}
+            />
+            <span className="slider round"></span>
+          </label>
+          <span className="toggle-label">Submit Anonymously?</span>
+        </div>
+
+        {/* Show only when NOT anonymous */}
+        {!isAnonymous && (
+          <input
+            type="text"
+            placeholder="Enter your name or email"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+        )}
+
 
         <button type="submit">
           Submit Feedback

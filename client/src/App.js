@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from "./pages/Home"
 import SideNav from "./components/SideNav"
 import "./styles.css"
+import "./components/Analytics.css"
 import Feedback from "./pages/Feedback"
 import Dashboard from "./pages/Dashboard"
 
