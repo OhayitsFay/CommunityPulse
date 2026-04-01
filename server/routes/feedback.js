@@ -3,11 +3,6 @@ const router = express.Router()
 const Feedback = require("../models/Feedback")
 const auth = require("../middleware/auth")
 
-router.get("/", auth, async (req, res) => {
-  const feedbacks = await Feedback.find().sort({ createdAt: -1 })
-  res.json(feedbacks)
-})
-
 // Submit feedback (NO LOGIN)
 router.post("/", async (req, res) => {
   try {

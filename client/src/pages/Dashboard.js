@@ -1,41 +1,37 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import Login from "../components/Login"
+import Analytics from "../components/Analytics"
 
 function Dashboard() {
 
   const [data, setData] = useState([])
   const [loggedIn, setLoggedIn] = useState(false)
 
-  useEffect(() => {
+  const loadFeedback = () => {
+    const token = localStorage.getItem("token")
+    if (!token) return setLoggedIn(false)
 
-      const token = localStorage.getItem("token")
-
-    if (token) {
+    axios.get("http://localhost:5000/api/feedback", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then(res => {
+      setData(res.data)
       setLoggedIn(true)
-
-      axios.get("http://localhost:5000/api/feedback", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      .then(res => setData(res.data))
-      .catch(() => {
-        setLoggedIn(false)
-      })
-    }
-
-  }, [])
-
-  // 🔴 IF NOT LOGGED IN → SHOW LOGIN
-  if (!loggedIn) {
-    return <Login onLogin={() => setLoggedIn(true)} />
+    })
+    .catch(() => setLoggedIn(false))
   }
 
-  // ✅ IF LOGGED IN → SHOW DASHBOARD
+  useEffect(() => {
+    loadFeedback()
+  }, [])
+
+  if (!loggedIn) {
+    return <Login onLogin={loadFeedback} />
+  }
+
   return (
     <div className="main-content">
-
       <h2>Admin Dashboard</h2>
 
       {data.length === 0 ? (
@@ -49,6 +45,15 @@ function Dashboard() {
         ))
       )}
 
+
+
+      {/* Analytics section */}
+      {data.length > 0 && (
+        <>
+          <h3 style={{ marginTop: "40px" }}>Analytics</h3>
+          <Analytics data={data} />
+        </>
+      )}
     </div>
   )
 }

@@ -276,8 +276,8 @@ footer {
   background: #13542a;
   cursor: pointer;
   transform: scale(1.05);
-
 }
+
 /* MOBILE RESPONSIVENESS */
 @media (max-width: 768px) {
 
