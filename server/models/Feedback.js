@@ -61,9 +61,8 @@ const feedbackSchema = new mongoose.Schema({
     type: Boolean,
     default: true
   },
-  submitterName: {
+  userName: {
     type: String,
-    trim: true,
     default: ""
   },
   rating: {

@@ -14,22 +14,14 @@ const sanitizeAttachment = (file) => ({
   dataUrl: typeof file?.dataUrl === "string" ? file.dataUrl.trim() : ""
 })
 
-router.get("/", auth, async (req, res) => {
-  try {
-    const feedbacks = await Feedback.find().sort({ createdAt: -1 })
-    res.json(feedbacks)
-  } catch (error) {
-    res.status(500).json({ error: error.message })
-  }
-})
-
+// Submit feedback (NO LOGIN)
 router.post("/", async (req, res) => {
   try {
     const {
       message,
       category,
       isAnonymous = true,
-      submitterName = "",
+      userName = "",
       rating,
       attachments = [],
       voiceNote = null
@@ -88,7 +80,7 @@ router.post("/", async (req, res) => {
       message: String(message).trim(),
       category: String(category || "General").trim(),
       isAnonymous: Boolean(isAnonymous),
-      submitterName: Boolean(isAnonymous) ? "" : String(submitterName).trim(),
+      userName: Boolean(isAnonymous) ? "" : String(userName).trim(),
       rating: parsedRating,
       attachments: sanitizedAttachments,
       voiceNote: sanitizedVoiceNote
@@ -101,5 +93,16 @@ router.post("/", async (req, res) => {
     res.status(500).json({ error: error.message })
   }
 })
+
+// Get all feedback (ADMIN ONLY)
+router.get("/", auth, async (req, res) => {
+  try {
+    const feedbacks = await Feedback.find().sort({ createdAt: -1 })
+    res.json(feedbacks)
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
+})
+
 
 module.exports = router
