@@ -21,7 +21,6 @@ function FeedbackForm() {
   const [rating, setRating] = useState(5)
   const [attachments, setAttachments] = useState([])
   const [voiceNote, setVoiceNote] = useState(null)
-  const [userName, setUserName] = useState("")
   const [status, setStatus] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isRecording, setIsRecording] = useState(false)
@@ -152,17 +151,17 @@ function FeedbackForm() {
       return
     }
 
-    if (!isAnonymous && !submitterName.trim()) {
+    if (!isAnonymous && !userName.trim()) {
       setStatus("Please enter your name or switch back to anonymous.")
       return
     }
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/feedback`, {
+      const res = await axios.post(`${API_BASE_URL}/api/feedback`, {
         message,
         category,
         isAnonymous,
-        submitterName,
+        userName,
         rating,
         attachments,
         voiceNote
