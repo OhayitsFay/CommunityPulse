@@ -4,7 +4,7 @@ const Feedback = require("../models/Feedback")
 const auth = require("../middleware/auth")
 
 const MAX_ATTACHMENT_COUNT = 3
-const MAX_IMAGE_SIZE_BYTES = 2 * 1024 * 1024
+const MAX_IMAGE_SIZE_BYTES = 2 * 1000 * 1000
 const MAX_AUDIO_SIZE_BYTES = 5 * 1024 * 1024
 
 const sanitizeAttachment = (file) => ({
@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ error: "Rating must be a whole number between 1 and 5." })
     }
 
-    if (!isAnonymous && !String(submitterName).trim()) {
+    if (!isAnonymous && !String(userName).trim()) {
       return res.status(400).json({ error: "Name is required when anonymous mode is turned off." })
     }
 

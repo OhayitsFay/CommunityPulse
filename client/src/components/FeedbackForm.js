@@ -3,7 +3,7 @@ import axios from "axios"
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000"
 const MAX_ATTACHMENTS = 3
-const MAX_IMAGE_SIZE_BYTES = 2 * 1024 * 1024
+const MAX_IMAGE_SIZE_BYTES = 2 * 1000 * 1000
 
 const fileToDataUrl = (file) =>
   new Promise((resolve, reject) => {
@@ -114,15 +114,15 @@ function FeedbackForm() {
           1,
           Math.round((Date.now() - recordingStartedAtRef.current) / 1000)
         )
-
-        // ⭐ FIX: Use URL instead of base64 to avoid silent audio
-        const dataUrl = URL.createObjectURL(audioBlob)
-
-        setVoiceNote({
+        const reader = new FileReader()
+        reader.onloadend = () => {
+          setVoiceNote({
           mimeType: "audio/webm",
           durationSeconds,
-          dataUrl
+          dataUrl: reader.result  // BASE64
         })
+      }
+      reader.readAsDataURL(audioBlob)
 
         stream.getTracks().forEach((t) => t.stop())
         setIsRecording(false)
